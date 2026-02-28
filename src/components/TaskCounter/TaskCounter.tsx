@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-// import styles from "./TaskCounter.module.css";
+import styles from "./TaskCounter.module.css";
 import type { Task } from "../../types";
 
 export function TaskCounter({ tasks }: { tasks: Task[] }): ReactElement {
@@ -13,9 +13,9 @@ export function TaskCounter({ tasks }: { tasks: Task[] }): ReactElement {
         tasksText = "zadań";
     }
     return (
-        <>
+        <div className={styles.taskCounter}>
             <h2>Do zrobienia</h2>
             <p>{`${numberOfTasks} ${tasksText}`}</p>
-        </>
+        </div>
     );
 }

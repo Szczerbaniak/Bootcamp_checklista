@@ -2,10 +2,11 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import type { Task, Priority } from "./types";
 import { TaskCounter } from "./components/TaskCounter/TaskCounter";
+import { TaskItem } from "./components/ToDoItem/TaskItem";
 
 function App() {
     const [tasks, setTasks] = useState<Task[]>([
-        { content: "test", priority: "medium", done: false, id: 1 },
+        { content: "test", priority: "medium", isDone: false, id: 1 },
     ]);
 
     function assignNewIdToTask(currentTasks: Task[]): number {
@@ -20,7 +21,7 @@ function App() {
             {
                 content: newTaskContent,
                 priority: taskPriority,
-                done: false,
+                isDone: false,
                 id: assignNewIdToTask(prevTasks),
             },
         ]);
@@ -51,6 +52,18 @@ function App() {
                     <h1>Lista zadań</h1>
                     <TaskCounter tasks={tasks} />
                 </header>
+                <main>
+                    <ul>
+                        {tasks.map(({ content, priority, isDone, id }) => (
+                            <TaskItem
+                                taskContent={content}
+                                taskPriority={priority}
+                                isDone={isDone}
+                                key={id}
+                            />
+                        ))}
+                    </ul>
+                </main>
             </div>
         </>
     );
