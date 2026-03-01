@@ -14,8 +14,8 @@ export function TaskCounter({ tasks }: { tasks: Task[] }): ReactElement {
     }
     return (
         <div className={styles.taskCounter}>
-            <h2>Do zrobienia</h2>
-            <p>{`${numberOfTasks} ${tasksText}`}</p>
+            <h1>Do zrobienia</h1>
+            <h2>{`${numberOfTasks} ${tasksText}`}</h2>
         </div>
     );
 }

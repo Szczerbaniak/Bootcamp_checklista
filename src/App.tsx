@@ -6,9 +6,7 @@ import { TaskItem } from './components/ToDoItem/TaskItem';
 import { Form } from './components/Form/Form';
 
 function App() {
-    const [tasks, setTasks] = useState<Task[]>([
-        { content: 'test', priority: 'low', isDone: false, id: 1 },
-    ]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
     function assignNewIdToTask(currentTasks: Task[]): number {
         return currentTasks.length > 0
@@ -49,7 +47,6 @@ function App() {
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <h1>Lista zadań</h1>
                 <TaskCounter tasks={tasks} />
             </header>
             <main>
@@ -58,7 +55,7 @@ function App() {
                         addTask(newTaskContent, newTaskPriority)
                     }
                 ></Form>
-                <ul>
+                <ul className={styles.ul}>
                     {tasks.map(({ content, priority, isDone, id }) => (
                         <TaskItem
                             taskContent={content}

@@ -23,17 +23,20 @@ export function Form({ onFormSubmit }: FormProps) {
                 onChange={(e) => setInputValue(e.target.value)}
                 className={styles.input}
                 type='text'
+                maxLength={80}
+                placeholder='nowe zadanie'
             />
             <select
                 name='priority'
                 id='priority'
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as Priority)}
+                className={`${styles.select} ${styles[priority]}`}
             >
                 {PRIORITIES.map((priorityType) => (
                     <option
                         value={priorityType}
-                        className={styles.priorityType}
+                        className={`${styles.option} ${styles[priorityType]}`}
                     >
                         {priorityType}
                     </option>

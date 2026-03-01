@@ -18,14 +18,12 @@ export function TaskItem({
     deleteTask,
 }: TaskItemProps) {
     return (
-        <li className={styles.task}>
-            <p
-                className={`${styles[taskPriority]} ${isDone ? styles.done : ''}`}
-            >
+        <li className={`${styles.task} ${styles[taskPriority]}`}>
+            <p className={`${styles.p} ${isDone ? styles.done : ''}`}>
                 {taskContent}
             </p>
-            <Button onClick={changeTaskToDone}>done</Button>
-            <Button onClick={deleteTask}>del</Button>
+            {!isDone ? <Button onClick={changeTaskToDone}>Zrobione</Button> : ''}
+            <Button onClick={deleteTask}>Usuń</Button>
         </li>
     );
 }
