@@ -35,7 +35,7 @@ function App() {
                 }
                 return {
                     ...task,
-                    done: true,
+                    isDone: true,
                 };
             }),
         );
@@ -60,6 +60,8 @@ function App() {
                                 taskPriority={priority}
                                 isDone={isDone}
                                 key={id}
+                                changeTaskToDone={() => markTaskComplited(id)}
+                                deleteTask={() => removeTask(id)}
                             />
                         ))}
                     </ul>
