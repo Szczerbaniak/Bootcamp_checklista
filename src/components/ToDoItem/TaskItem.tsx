@@ -1,6 +1,6 @@
-import styles from "./TaskItem.module.css";
-import type { Priority } from "../../types";
-import { Button } from "../Button/Button";
+import styles from './TaskItem.module.css';
+import type { Priority } from '../../types';
+import { Button } from '../Button/Button';
 
 type TaskItemProps = {
     taskContent: string;
@@ -20,12 +20,12 @@ export function TaskItem({
     return (
         <li className={styles.task}>
             <p
-                className={`${styles[taskPriority]} ${isDone ? styles.done : ""}`}
+                className={`${styles[taskPriority]} ${isDone ? styles.done : ''}`}
             >
                 {taskContent}
             </p>
-            <Button onClickEvent={changeTaskToDone}>done</Button>
-            <Button onClickEvent={deleteTask}>del</Button>
+            <Button onClick={changeTaskToDone}>done</Button>
+            <Button onClick={deleteTask}>del</Button>
         </li>
     );
 }

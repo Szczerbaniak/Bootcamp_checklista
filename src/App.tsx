@@ -1,12 +1,13 @@
-import { useState } from "react";
-import styles from "./App.module.css";
-import type { Task, Priority } from "./types";
-import { TaskCounter } from "./components/TaskCounter/TaskCounter";
-import { TaskItem } from "./components/ToDoItem/TaskItem";
+import { useState } from 'react';
+import styles from './App.module.css';
+import type { Task, Priority } from './types';
+import { TaskCounter } from './components/TaskCounter/TaskCounter';
+import { TaskItem } from './components/ToDoItem/TaskItem';
+import { Form } from './components/Form/Form';
 
 function App() {
     const [tasks, setTasks] = useState<Task[]>([
-        { content: "test", priority: "medium", isDone: false, id: 1 },
+        { content: 'test', priority: 'low', isDone: false, id: 1 },
     ]);
 
     function assignNewIdToTask(currentTasks: Task[]): number {
@@ -46,28 +47,31 @@ function App() {
     }
 
     return (
-        <>
-            <div className={styles.container}>
-                <header className={styles.header}>
-                    <h1>Lista zadań</h1>
-                    <TaskCounter tasks={tasks} />
-                </header>
-                <main>
-                    <ul>
-                        {tasks.map(({ content, priority, isDone, id }) => (
-                            <TaskItem
-                                taskContent={content}
-                                taskPriority={priority}
-                                isDone={isDone}
-                                key={id}
-                                changeTaskToDone={() => markTaskComplited(id)}
-                                deleteTask={() => removeTask(id)}
-                            />
-                        ))}
-                    </ul>
-                </main>
-            </div>
-        </>
+        <div className={styles.container}>
+            <header className={styles.header}>
+                <h1>Lista zadań</h1>
+                <TaskCounter tasks={tasks} />
+            </header>
+            <main>
+                <Form
+                    onFormSubmit={(newTaskContent, newTaskPriority) =>
+                        addTask(newTaskContent, newTaskPriority)
+                    }
+                ></Form>
+                <ul>
+                    {tasks.map(({ content, priority, isDone, id }) => (
+                        <TaskItem
+                            taskContent={content}
+                            taskPriority={priority}
+                            isDone={isDone}
+                            key={id}
+                            changeTaskToDone={() => markTaskComplited(id)}
+                            deleteTask={() => removeTask(id)}
+                        />
+                    ))}
+                </ul>
+            </main>
+        </div>
     );
 }
 

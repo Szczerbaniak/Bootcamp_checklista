@@ -1,0 +1,9 @@
+.low {
+    background-color: var(--color-green);
+}
+.medium {
+    background-color: var(--color-yellow);
+}
+.high {
+    background-color: var(--color-red);
+}

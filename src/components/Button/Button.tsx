@@ -1,15 +1,17 @@
-import type { MouseEventHandler, ReactElement } from "react";
-import stylse from "./Button.module.css";
+import type {
+    ComponentPropsWithoutRef,
+    MouseEventHandler,
+    ReactNode,
+} from 'react';
+import styles from './Button.module.css';
 
-export function Button({
-    children,
-    onClickEvent,
-}: {
-    children: ReactElement | string;
-    onClickEvent: MouseEventHandler<HTMLButtonElement>;
-}) {
+type ButtonProps = ComponentPropsWithoutRef<'button'> & {
+    children: ReactNode;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+};
+export function Button({ children, onClick }: ButtonProps) {
     return (
-        <button className={stylse.button} onClick={onClickEvent}>
+        <button className={styles.button} onClick={onClick}>
             {children}
         </button>
     );
