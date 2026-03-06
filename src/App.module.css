@@ -23,3 +23,12 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.editTaskForm.editTaskForm {
+    border: 0.1rem solid;
+    border-left: 1rem solid;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+}

@@ -5,18 +5,26 @@ import { PRIORITIES, type Priority } from '../../types';
 
 type FormProps = {
     onFormSubmit: (inputValue: string, priority: Priority) => void;
+    defaultText?: string;
+    defaultPriority?: Priority;
+    className?: string;
 };
 
-export function Form({ onFormSubmit }: FormProps) {
-    const [inputValue, setInputValue] = useState<string>('');
-    const [priority, setPriority] = useState<Priority>('low');
+export function Form({
+    onFormSubmit,
+    defaultText = '',
+    defaultPriority = 'low',
+    className,
+}: FormProps) {
+    const [inputValue, setInputValue] = useState<string>(defaultText);
+    const [priority, setPriority] = useState<Priority>(defaultPriority);
     return (
         <form
             onSubmit={(event) => {
                 event.preventDefault();
                 onFormSubmit(inputValue, priority);
             }}
-            className={styles.form}
+            className={`${styles.form} ${className}`}
         >
             <input
                 value={inputValue}
